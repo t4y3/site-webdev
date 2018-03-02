@@ -1,9 +1,6 @@
 # ANGULAR
 # =======
 
-# Temporary as we transition to angular_router 2:
-/api/angular_router/angular_router/(Route|RouteConfig|RouteParams|OnReuse)-class
-
 # Temporary (until v5 of lottery apps are in angular_examples)
 /examples/lottery/
 
