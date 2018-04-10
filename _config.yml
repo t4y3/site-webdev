@@ -1,19 +1,19 @@
 # Site settings
 title: webdev.dartlang.org
 description: "Documentation to help you build high-quality web apps, using Dart tools and libraries. Includes AngularDart docs."
-url: https://webdev.dartlang.org
-# dev-url: https://webdev-dartlang-org-dev.firebaseapp.com
-prev-url: https://webdev-angular3-dartlang-org.firebaseapp.com
+url: https://webdev-dartlang-org-dev.firebaseapp.com
+prev-url: https://www.dartlang.org
 permalink: /:categories/:title
 repo: https://github.com/dart-lang/site-webdev
-branch: 5-dev
+branch: master
 site-status-issue-url: https://github.com/dart-lang/site-webdev/issues/1369
 
 # Global variables
 # use case:
 #   {{site.dartlang}}/downloads
 #
-dart4web: ''
+www: https://www.dartlang.org
+webdev: https://webdev.dartlang.org
 dartlang: "https://www.dartlang.org"
 dart_vm:  "https://www.dartlang.org/dart-vm"
 flutter:  "https://flutter.io"

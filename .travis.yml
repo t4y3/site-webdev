@@ -114,7 +114,7 @@ jobs:
         # - ./scripts/deploy/pr.sh || travis_terminate 1
       deploy:
         - provider: script
-          script: ./scripts/deploy/firebase.sh --robots-ok
+          script: ./scripts/deploy/firebase.sh --robots-ok dev
           skip_cleanup: true
           on:
             repo: dart-lang/site-webdev
@@ -150,4 +150,4 @@ jobs:
 
 # Only run Travis jobs for named branches (to avoid double builds for each PR)
 branches:
-  only: [master, /^\d-dev$/, /travis-build/]
+  only: [master, /^\d(\.x|-dev)$/, /travis-build/]
