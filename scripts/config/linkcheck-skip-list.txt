@@ -1,6 +1,9 @@
 # ANGULAR
 # =======
 
+# Temporary until the install page integration is complete
+/tools/sdk
+
 # Temporary (until v5 of lottery apps are in angular_examples)
 /examples/lottery/
 

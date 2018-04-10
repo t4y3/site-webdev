@@ -105,6 +105,7 @@ custom:
 
 # Build settings
 source: src
+symlinked-sources: [site-shared/src]
 destination: publish
 bundler_args: --without production
 

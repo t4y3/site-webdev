@@ -2,7 +2,6 @@
 title: Dart Tools for the Web
 short-title: Tools
 description: The tools that support web development using Dart.
-permalink: /tools
 show_breadcrumbs: false
 ---
 
@@ -10,8 +9,7 @@ This page lists specialized tools for developing web apps.
 For information about general tools for Dart apps, see
 [Dart Tools.]({{site.dartlang}}/tools)
 
-<a name="ides"></a>
-<h2>Recommended IDE</h2>
+## Recommended IDE {#ides}
 
 {% include webstorm-not-ready.md %}
 
@@ -25,8 +23,13 @@ we recommend WebStorm, which comes with Dart support.
 
 See [Dart Tools]({{site.dartlang}}/tools) for a list of other IDEs.
 
-<a name="other-tools"></a>
-<h2>Command-line tools</h2>
+## SDK
+
+Although [DartPad][]{: target="_blank"} is a great way to learn how to write a
+simple web app, once you're ready to develop real apps, you need to
+[install the Dart SDK.](/tools/sdk)
+
+## Command-line tools
 
 In addition to the [other Dart tools]({{site.dartlang}}/tools)
 included in the SDK, the following tools
@@ -40,3 +43,5 @@ offer specialized support for web programming.
 
 [build_runner](/tools/build_runner)
 : A package for building and serving web apps
+
+[DartPad]: {{site.custom.dartpad.direct-link}}
