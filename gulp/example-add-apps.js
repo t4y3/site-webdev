@@ -19,6 +19,7 @@ module.exports = function (gulp, plugins, config) {
   const rename = plugins.rename;
   const replace = plugins.replace;
 
+  const component_gallery = 'component-gallery';
   const chooseRegEx = argv.filter || '.';
   const skipRegEx = argv.skip || null;
 
@@ -28,6 +29,7 @@ module.exports = function (gulp, plugins, config) {
   const findCmd = `find ${EXAMPLES_ROOT} -type f -name ".docsync.json"`;
   const examplesFullPath = (cp.execSync(findCmd) + '').split(/\s+/).filter(p => p).map(p => path.dirname(p));
   const examples = examplesFullPath.map(p => path.basename(p))
+    .concat(component_gallery)
     .filter(p => !p.match(skipRegEx))
     .filter(p => p.match(chooseRegEx))
     .sort();
@@ -41,29 +43,27 @@ module.exports = function (gulp, plugins, config) {
     plugins.runSequence('_examples-get-repos', '_examples-cp-to-site-folder', done));
 
   gulp.task('_examples-get-repos', () => {
-    // const promises = [];
     examples.forEach(name => {
-      const exPath = path.join(tmpReposPath, EXAMPLES_ROOT, name)
+      const exPath = path.join(tmpReposPath, EXAMPLES_ROOT, name);
       if (fs.existsSync(exPath)) {
         _exec('git checkout gh-pages', { cwd: exPath });
         _exec('git pull', { cwd: exPath });
       } else {
-        const repo = `${config.ghNgEx}/${name}.git`;
+        const repo = name === component_gallery
+          ? 'https://github.com/dart-lang/angular_components_example.git'
+          : `${config.ghNgEx}/${name}.git`;
         // To checkout gh-pages only use: --depth 1 --branch gh-pages.
         _exec(`git clone ${repo} ${exPath}`);
         _exec('git fetch', { cwd: exPath });
         _exec('git checkout gh-pages', { cwd: exPath });
       }
     });
-    // return plugins.q.all(promises);
-    // return promises.reduce(plugins.q.when, plugins.q(true)).then(() => done());
   });
 
-  let c = 0;
   gulp.task('_examples-cp-to-site-folder', done => {
-    if (fs.existsSync(siteExPath)) {
-      gutil.log(`  No examples to copy since folder exists: '${siteExPath}'.`);
-      gutil.log(`  Use '--clean' to have '${siteExPath}' refreshed.`);
+    if (fs.existsSync(siteExPath) && !argv.force) {
+      gutil.log(`  Not copying example apps because '${siteExPath}' folder exists.`);
+      gutil.log(`  Use either '--force' to force copy, or '--clean' to have '${siteExPath}' refreshed.`);
       done();
       return;
     }
@@ -76,10 +76,12 @@ module.exports = function (gulp, plugins, config) {
       `!${baseDir}/examples/*/${ngMajorVers}/`,
       `${baseDir}/examples/*/*/${ngMajorVers}/**`,
       `!${baseDir}/examples/*/*/${ngMajorVers}/`,
+      `${baseDir}/examples/${component_gallery}/**`,
     ], { base: baseDir })
       // Adjust the <base href>:
       .pipe(indexHtml)
       .pipe(replace(/(<base href=")([^"]+)\/\d+(\/.*?">)/, '$1/examples$2$3'))
+      .pipe(replace(/<title>AngularDart Gallery<\/title>/, `$&\n    <base href="/examples/${component_gallery}/">`))
       .pipe(indexHtml.restore)
       // Strip out NG version number from the path:
       .pipe(rename(p => p.dirname = p.dirname.replace(re, '$1')))
