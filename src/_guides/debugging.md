@@ -21,16 +21,19 @@ exists but isn't ready yet for general use. For the latest status, see the
 [devtools-frontend README.][devtools-frontend README]
 </aside>
 
-**This page is a draft.** TODO(kwalrath):
+{% comment %}
+NOTE TO EDITORS:
+Be careful to match the text formatting and terminology of the Chrome DevTools
+docs (https://developers.google.com/web/tools/chrome-devtools/) — especially
+the JavaScript debugging reference and JavaScript get started guide,
+so readers can easily switch back and forth between these docs.
 
-* Match text formatting and terminology of the Chrome DevTools docs — expecially
-  the [JavaScript debugging reference][] and [JavaScript get started guide][],
-  so readers can easily switch back and forth between these docs.
-* Check name of _Dart DevTools_.
-* Once Dart DevTools are ready for use by ordinary developers,
-  make DDT the first section/page and CDT the second,
-  with the DDT section having all the step-by-step directions.
-* Use macros in URLs, where available.
+TODO:
+Once Dart DevTools (or whatever we call it)
+is ready for use by ordinary developers,
+make DDT the first section/page and CDT the second,
+with the DDT section having all the step-by-step directions.
+{% endcomment %}
 
 
 ## Getting started with Chrome DevTools {#using-chrome-devtools}
@@ -202,7 +205,7 @@ The best description I found was http://www.mattzeunert.com/2016/02/19/custom-ch
 
 ### Disabling and re-enabling source maps {#enabling-and-disabling-source-maps}
 
-Both Chrome DevTools and Dart DevTools enable source maps, by default.
+Chrome DevTools <!-- and Dart DevTools --> enables source maps, by default.
 You might want to temporarily disable source maps so that you can see
 the generated JavaScript code.
 
@@ -260,9 +263,9 @@ or you just want to update them, activate them again:
 [Google Chrome]: https://www.google.com/chrome
 [JavaScript debugging reference]: https://developers.google.com/web/tools/chrome-devtools/javascript/reference
 [JavaScript get started guide]: https://developers.google.com/web/tools/chrome-devtools/javascript/
-[List]: https://api.dartlang.org/dev/dart-core/List-class.html
-[pub global documentation]: https://www.dartlang.org/tools/pub/cmd/pub-global
-[stagehand]: https://pub.dartlang.org/packages/stagehand
+[List]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
+[pub global documentation]: {{site.www}}/tools/pub/cmd/pub-global
+[stagehand]: {{site.pub-pkg}}/stagehand
 [todo_list_component.dart]: https://github.com/dart-lang/stagehand/blob/master/templates/web-angular/lib/src/todo_list/todo_list_component.dart
 [web-angular template]: https://github.com/dart-lang/stagehand/tree/master/templates/web-angular
 [webdev]: /tools/webdev
