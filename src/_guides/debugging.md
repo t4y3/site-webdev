@@ -4,8 +4,9 @@ title: Debugging Dart Web Apps
 description: Learn how to use DevTools to debug your Dart web app.
 ---
 
-You can use [Chrome DevTools][] and [dartdevc][]
-(via the [webdev][] command or your IDE) to debug your Dart web app.
+You can use [Chrome DevTools][] and the
+[Dart development compiler (dartdevc)][dartdevc]
+to debug your Dart web app.
 
 This page focuses on setup and
 special considerations for Dart. For general information on debugging with
@@ -20,16 +21,16 @@ exists but isn't ready yet for general use. For the latest status, see the
 [devtools-frontend README.][devtools-frontend README]
 </aside>
 
-TODO(kwalrath):
+**This page is a draft.** TODO(kwalrath):
 
 * Match text formatting and terminology of the Chrome DevTools docs — expecially
   the [JavaScript debugging reference][] and [JavaScript get started guide][],
   so readers can easily switch back and forth between these docs.
 * Check name of _Dart DevTools_.
 * Once Dart DevTools are ready for use by ordinary developers,
-  make DDT the first section/page and CDT is second,
+  make DDT the first section/page and CDT the second,
   with the DDT section having all the step-by-step directions.
-* Use macros for URLs, where possible.
+* Use macros in URLs, where available.
 
 
 ## Getting started with Chrome DevTools {#using-chrome-devtools}
@@ -88,8 +89,8 @@ using Chrome DevTools to debug a web app.
     create an **AngularDart web app** and name it **test_app**.
     You might see the description _A web app with material design components_.
 
-1. Serve the app in dartdevc, using either `webdev` at the command line or
-   your IDE.
+1. Compile and serve the app with dartdevc,
+   using either `webdev` at the command line or your IDE.
 
    ```terminal
    > webdev serve
@@ -97,8 +98,9 @@ using Chrome DevTools to debug a web app.
 
    <aside class="alert alert-info" markdown="1">
     **Note:**
-    The first time dartdevc compiles an app, it takes quite a while.
-    Subsequent compilations are much faster.
+    The first dartdevc compilation takes the longest,
+    because the entire app must be compiled.
+    After that, refreshes are much faster.
    </aside>
 
 1. Open the app in a Chrome browser window. For example,
